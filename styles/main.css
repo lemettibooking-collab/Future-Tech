@@ -1,5 +1,4 @@
 @charset "UTF-8";
-
 /**
   Нормализация блочной модели
  */
@@ -31,15 +30,15 @@ body,
   у которых есть атрибут class
  */
 :where(h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  p,
-  ul,
-  ol,
-  dl):where([class]) {
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+dl):where([class]) {
   margin-block: 0;
 }
 
@@ -159,7 +158,7 @@ button {
   атрибут fill со значением 'none' или начинается с 'url')
  */
 :where([fill]:not([fill=none],
-    [fill^=url])) {
+[fill^=url])) {
   fill: currentColor;
 }
 
@@ -169,7 +168,7 @@ button {
   атрибут stroke со значением 'none')
  */
 :where([stroke]:not([stroke=none],
-    [stroke^=url])) {
+[stroke^=url])) {
   stroke: currentColor;
 }
 
@@ -193,7 +192,6 @@ svg * {
   которые предпочитают их не использовать
  */
 @media (prefers-reduced-motion: reduce) {
-
   *,
   ::before,
   ::after {
@@ -203,7 +201,6 @@ svg * {
     scroll-behavior: auto !important;
   }
 }
-
 @font-face {
   font-family: "Kumbh Sans";
   src: url(/fonts/Inter\,Kumbh_Sans/KumbhSans-Regular.woff2) format("woff2");
@@ -211,7 +208,6 @@ svg * {
   font-style: normal;
   font-display: swap;
 }
-
 @font-face {
   font-family: "Inter";
   src: url(/fonts/Inter\,Kumbh_Sans/Inter-Medium.woff2) format("woff2");
@@ -219,7 +215,6 @@ svg * {
   font-style: normal;
   font-display: swap;
 }
-
 @font-face {
   font-family: "Inter";
   src: url(/fonts/Inter\,Kumbh_Sans/Inter-Bold.woff2) format("woff2");
@@ -227,7 +222,6 @@ svg * {
   font-style: normal;
   font-display: swap;
 }
-
 @font-face {
   font-family: "Inter";
   src: url(/fonts/Inter\,Kumbh_Sans/Inter-Regular.woff2) format("woff2");
@@ -235,7 +229,6 @@ svg * {
   font-style: normal;
   font-display: swap;
 }
-
 @font-face {
   font-family: "Inter";
   src: url(/fonts/Inter\,Kumbh_Sans/Inter-SemiBold.woff2) format("woff2");
@@ -243,7 +236,6 @@ svg * {
   font-style: normal;
   font-display: swap;
 }
-
 :root {
   --color-light: #FFFFFF;
   --color-dark: #141414;
@@ -263,8 +255,7 @@ svg * {
   --container-padding-x: 1rem;
   --transition-duration: 0.2s;
 }
-
-@media (width <=90.06125rem) {
+@media (width <= 90.06125rem) {
   :root {
     --container-width: 80rem;
   }
@@ -289,7 +280,7 @@ svg * {
   overflow: hidden !important;
 }
 
-@media (width <=47.99875rem) {
+@media (width <= 47.99875rem) {
   .hidden-mobile {
     display: none !important;
   }
@@ -390,17 +381,14 @@ svg * {
     color: var(--color-accent);
   }
 }
-
 @media (any-hover: none) {
   a:active {
     color: var(--color-accent);
   }
 }
-
 a {
   color: inherit;
 }
-
 a[class] {
   text-decoration: none;
 }
@@ -416,7 +404,6 @@ a[class] {
   align-items: center;
   column-gap: 0.625rem;
 }
-
 .icon::after {
   --size: 1.5rem;
   width: var(--size);
@@ -427,7 +414,11 @@ a[class] {
   background-size: contain;
   background-repeat: no-repeat;
 }
-
+@media (width <= 90.06125rem) {
+  .icon {
+    --size: 1.25rem ;
+  }
+}
 .icon--yellow-arrow::after {
   background-image: url("../icons/Vector.svg");
 }
@@ -436,47 +427,148 @@ a[class] {
   max-width: clamp(7.875rem, 7.0306372549rem + 3.4640522876vw, 11.1875rem);
 }
 
+.button {
+  display: flex;
+  justify-content: center;
+  padding: 1.125rem 1.5rem;
+  font-size: 1.125rem;
+  color: var(--color-gray-60);
+  background-color: var(--color-dark);
+  white-space: nowrap;
+  border: var(--border);
+  border-radius: 0.75rem;
+}
+@media (width <= 90.06125rem) {
+  .button {
+    padding: 0.875rem 1.25rem;
+    font-size: 0.875rem;
+    border-radius: 0.5rem;
+  }
+}
+@media (any-hover: hover) {
+  .button:hover {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+    background-color: var(--color-dark-10);
+  }
+}
+@media (any-hover: none) {
+  .button:active {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+    background-color: var(--color-dark-10);
+  }
+}
+.button--accent {
+  color: var(--color-dark);
+  font-weight: 500;
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  border-radius: 0.5rem;
+}
+
+.burger-button {
+  width: 2.125rem;
+  height: 2.125rem;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0.53125rem 0.265625rem;
+  color: var(--color-light);
+  background-color: transparent;
+  border: none;
+}
+@media (any-hover: hover) {
+  .burger-button:hover {
+    color: var(--color-accent);
+  }
+}
+@media (any-hover: none) {
+  .burger-button:active {
+    color: var(--color-accent);
+  }
+}
+.burger-button.is-active .burger-burron-line:first-child {
+  rotate: 45deg;
+  transform-origin: 0;
+  translate: 0.25em -0.1em;
+}
+.burger-button.is-active .burger-burron-line:nth-child(2) {
+  rotate: -45deg;
+}
+.burger-button.is-active .burger-burron-line:last-child {
+  width: 0;
+}
+.burger-button__line {
+  background-color: currentColor;
+  width: 100%;
+  height: 0.125rem;
+  border-radius: 1rem;
+  transition-duration: var(--transition-duration);
+}
+.burger-button__line:last-child {
+  width: 55%;
+  align-self: end;
+}
+
 .header__promo {
   padding-block: 1.25rem;
   text-align: center;
   border-bottom: var(--border);
 }
-
+@media (width <= 47.99875rem) {
+  .header__promo {
+    padding-block: 0.875rem;
+  }
+}
 .header__body {
   padding-block: 1.5rem;
   background-color: var(--color-dark-10);
 }
-
 .header__body-inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
   column-gap: 1rem;
 }
-
 @media (width > 47.99875rem) {
   .header__overlay {
     display: contents;
   }
 }
-
+@media (width <= 47.99875rem) {
+  .header__overlay:not(.is-active) {
+    opacity: 0;
+    visibility: hidden;
+    translate: 100%;
+  }
+}
 .header__menu-list {
   display: flex;
   align-items: center;
   column-gap: 1rem;
 }
-
+@media (width <= 90.06125rem) {
+  .header__menu-list {
+    column-gap: 0.375rem;
+  }
+}
 .header__menu-link {
   padding: 0.875rem 1.5rem;
   color: var(--color-gray-50);
 }
-
+@media (width <= 90.06125rem) {
+  .header__menu-link {
+    padding: 0.625rem 1.125rem;
+  }
+}
 .header__menu-link.is-active {
   color: var(--color-light);
   background-color: var(--color-dark);
   border: var(--border);
   border-radius: 0.625rem;
   font-weight: 500;
+  pointer-events: none;
 }
 
 /*# sourceMappingURL=main.css.map */
