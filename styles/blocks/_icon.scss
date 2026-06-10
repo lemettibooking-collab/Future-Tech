@@ -19,7 +19,7 @@
 
     @include laptop {
 
-        --size: #{rem(20)}
+        --size: #{rem(20)};
     }
 
     &--yellow-arrow {
