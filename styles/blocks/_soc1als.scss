@@ -1,1 +1,15 @@
 @use '../helpers' as *;
+
+.soc1als {
+
+    &-list {
+
+        display: flex;
+        column-gap: rem(20);
+
+        @include laptop {
+
+            column-gap: rem(20);
+        }
+    }
+}
