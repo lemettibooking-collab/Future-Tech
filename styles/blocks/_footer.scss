@@ -21,6 +21,21 @@
 
             display: grid;
             row-gap: fluid(36, 18);
+
+            &:last-child {
+
+                @include tablet {
+
+                    grid-column: -1 / 1;
+
+                    .footer__menu-list {
+
+                        flex-direction: row;
+                        flex-wrap: wrap;
+                        gap: rem(12);
+                    }
+                }
+            }
         }
 
         &-list {
@@ -35,6 +50,17 @@
             display: flex;
             align-items: center;
             column-gap: rem(8);
+        }
+
+        @include tablet {
+
+            grid-template-columns: repeat(2, 1fr);
+            row-gap: rem(40);
+        }
+
+        @include mobile {
+
+            row-gap: rem(20);
         }
 
     }
@@ -52,6 +78,12 @@
             padding-block: rem(24);
         }
 
+        @include mobile {
+
+            flex-direction: column;
+            row-gap: rem(20);
+        }
+
         &-menu {
 
             &-list {
@@ -67,6 +99,14 @@
                 }
 
             }
+        }
+    }
+
+    &__soc1als {
+
+        @include mobile {
+
+            order: -1;
         }
     }
 }

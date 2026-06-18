@@ -2,7 +2,7 @@
 
 .soc1als {
 
-    &-list {
+    &__list {
 
         display: flex;
         column-gap: rem(20);
@@ -10,6 +10,19 @@
         @include laptop {
 
             column-gap: rem(20);
+        }
+    }
+
+    &__link {
+
+        color: var(--color-light);
+
+        @include square (var(--size));
+        --size: #{rem(24)};
+
+        @include laptop {
+
+            --size:#{rem(20)};
         }
     }
 }
